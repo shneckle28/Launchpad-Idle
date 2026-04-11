@@ -159,22 +159,6 @@ Possible future improvements:
 
 ---
 
-## License
-
-MIT
-
----
-
-## Screenshots / GIFs
-
-This repo will look even better with:
-
-- a photo of the Launchpad running the app
-- a GIF showing several animations
-- a short clip showing palette changes in action
-
----
-
 ## Credits
 
 Built for people who like MIDI controllers, LED visuals, desk setups, and creative hardware projects.
