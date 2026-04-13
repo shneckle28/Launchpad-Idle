@@ -5,7 +5,7 @@ import tkinter as tk
 import customtkinter as ctk
 
 from animations import ANIMATIONS, PRESETS, GRID_SIZE, CORNERS
-from launchpad import LaunchpadPro, list_output_devices
+from launchpad import LaunchpadDevice, list_output_devices
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -25,7 +25,7 @@ class MidiControllerApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Launchpad Pro Controller")
+        self.title("Launchpad Controller")
         self.geometry("980x660")
         self.resizable(False, False)
         self.configure(fg_color=BG)
@@ -36,7 +36,7 @@ class MidiControllerApp(ctk.CTk):
         except Exception:
             pass
 
-        self.launchpad        = LaunchpadPro()
+        self.launchpad        = LaunchpadDevice()
         self.anim_thread      = None
         self.stop_event       = threading.Event()
         self.current_anim     = None
@@ -55,7 +55,7 @@ class MidiControllerApp(ctk.CTk):
     def _build_ui(self):
         ctk.CTkLabel(
             self,
-            text="LAUNCHPAD PRO CONTROLLER",
+            text="LAUNCHPAD CONTROLLER",
             font=ctk.CTkFont(family="Consolas", size=17, weight="bold"),
             text_color="#6699ff",
         ).pack(pady=(18, 10))
@@ -285,7 +285,7 @@ class MidiControllerApp(ctk.CTk):
         self.device_menu.configure(state="disabled")
 
         def _do_connect():
-            ok, msg = self.launchpad.connect(device_id)
+            ok, msg = self.launchpad.connect(device_id, selected)
             def _finish():
                 self.device_menu.configure(state="normal")
                 if ok:
